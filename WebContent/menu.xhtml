@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:c="http://java.sun.com/jsp/jstl/core"
+	    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script>
+		function check(){
+			var message = document.getElementById("form:input");
+			if(confirm("Are you sure sending message "+ message.value + " !")){
+				return true;
+			}
+			return false;
+		}
+	</script>
+	
+</h:head>
+<h:body>
+	<h:form id="form">
+	    
+	    <p:menubar> 
+	        <p:submenu label="Equipo" icon="pi pi-pencil">
+	            <p:menuitem value="Buscar" url="#" action="buscarEquipo"/>
+	        </p:submenu>
+    	</p:menubar>
+    	
+    	<p:submenu label="Admin" icon="pi pi-pencil">
+	    	<p:menuitem value="Salir" url="#" action="login"/>
+	    </p:submenu>
+		
+	</h:form>
+</h:body>
+</html>

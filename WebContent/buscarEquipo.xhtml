@@ -1,0 +1,241 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:c="http://java.sun.com/jsp/jstl/core"
+	    xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script>
+		function limpiarCampos(){
+			document.getElementById("form:txtEstatus").value  = "";
+			document.getElementById("form:txtRegion").value = "";
+			document.getElementById("form:txtLocalidad").value  = "";
+			document.getElementById("form:txtBodega").value = "";
+			document.getElementById("form:txtRSocial").value  = "";
+			document.getElementById("form:txtAccion").value = "";			
+			document.getElementById("form:txtFProgramacion").value  = "";
+			document.getElementById("form:txtProveedor").value = "";
+			document.getElementById("form:txtID").value  = "";
+		}
+	</script>
+</h:head>
+<h:body>
+	<h:form id="form">
+	    	    
+	    <!-- Tabla Principal para la busqueda de la aplicacion -->
+	    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+	    <tr><td height="30px" style="padding-left: 5px;" ><p:outputLabel value="Inicio / Buscar / Equipo" /></td></tr>
+	    <tr><td height="30px" style="padding-left: 5px;" ></td></tr>
+	    <tr><td height="30px" style="padding-left: 5px;" bgcolor="#4682B4"><p:outputLabel value="Filtros de búsqueda" /></td></tr>
+	    <tr>
+	    	<td height="200px" style="padding-left: 5px;">
+	    	
+		    	<!-- Tabla para el filtros de busqueda -->
+			    <table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Estatus" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtEstatus" style="width: 150px;" /> -->
+			    		<p:selectOneMenu id="txtEstatus" style="width:150px" value="#{equipoBusBean.equipoBusquedaModelo.estatus}">
+				            <f:selectItem itemLabel=""            itemValue="" />
+				            <f:selectItem itemLabel="RENOVADO"    itemValue="1" />
+				            <f:selectItem itemLabel="POR RENOVAR" itemValue="2" />
+				            <f:selectItem itemLabel="PENDIENTES"  itemValue="3" />
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Región" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtRegion" style="width: 150px;" /> -->
+			    		<p:selectOneMenu id="txtRegion" style="width:150px" value="#{equipoBusBean.equipoBusquedaModelo.region}">
+				            <f:selectItem itemLabel=""             itemValue="" />
+				            <f:selectItem itemLabel="CENTRAL"      itemValue="1" />
+				            <f:selectItem itemLabel="METRO" 	   itemValue="2" />
+				            <f:selectItem itemLabel="SURESTE"      itemValue="3" />
+				            <f:selectItem itemLabel="CORPORATIVO " itemValue="4" />
+				            <f:selectItem itemLabel="NORTE"    	   itemValue="5" />
+				            <f:selectItem itemLabel="BAJIO"        itemValue="6" />
+				            <f:selectItem itemLabel="GLOBO"    	   itemValue="7" />
+				            <f:selectItem itemLabel="NOROESTE"     itemValue="8" />				            
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Localidad" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtLocalidad" style="width: 330px;" /> -->
+			    		<!-- <p:selectOneMenu id="txtLocalidad" style="width:330px" value="#{equipoBusBean.equipoBusquedaModelo.localidad}">
+				            <f:selectItem itemLabel="" itemValue="" />
+				            <f:selectItem itemLabel="CENTRO DE SERVICIOS COMPARTIDOS"    itemValue="1" />
+				            <f:selectItem itemLabel="FABRICA BIMBO GOLFO" 				 itemValue="2" />
+				            <f:selectItem itemLabel="CENTRO DE VENTAS BIMBO XOCHIMILCO"  itemValue="3" />
+				        </p:selectOneMenu> -->
+				        <p:selectOneMenu id="txtLocalidad" style="width: 330px;" value="#{equipoBusBean.equipoBusquedaModelo.localidad}">
+				            <f:selectItem itemLabel="" itemValue="" />
+				            <f:selectItems value="#{equipoBusBean.equipoBusquedaModelo.localidadesList}" />
+				        </p:selectOneMenu>
+			    	</td>
+			    </tr> 
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Bodega" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    		<!-- <p:inputText id="txtBodega" style="width: 488px;" /> -->
+			    		<p:selectOneMenu id="txtBodega" style="width:488px" value="#{equipoBusBean.equipoBusquedaModelo.bodega}">
+				            <f:selectItem itemLabel=""             	 							itemValue="" />
+				            <f:selectItem itemLabel="BIMBO, S.A. DE C.V."       				itemValue="1" />
+				            <f:selectItem itemLabel="TRADICIÓN EN PASTELERÍAS S. A. DE C. V." 	itemValue="2" />
+				            <f:selectItem itemLabel="PRODUCTOS RICOLINO SAPI DE CV"       		itemValue="3" />
+				            <f:selectItem itemLabel="BARCEL, S.A. DE C.V." 						itemValue="4" />	
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO S.A. DE C.V."       		itemValue="5" />
+				            <f:selectItem itemLabel="Equipo de uso comun"           			itemValue="6" />
+				            <f:selectItem itemLabel="MOLDES Y EXHIBIDORES, S.A DE C.V."         itemValue="7" />
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Razon Social" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtRSocial" style="width: 330px;" /> -->
+			    		<p:selectOneMenu id="txtRSocial" style="width:330px" value="#{equipoBusBean.equipoBusquedaModelo.razonSocial}">
+				            <f:selectItem itemLabel=""             	 	            itemValue="" />
+				            <f:selectItem itemLabel="FABRICA BIMBO IRAPUATO"       	itemValue="1" />
+				            <f:selectItem itemLabel="FABRICA BIMBO AZCAPOTZALCO" 	itemValue="2" />
+				            <f:selectItem itemLabel="GLOBAL SERVICES"       		itemValue="3" />
+				            <f:selectItem itemLabel="FABRICA BIMBO MEXICALI" 		itemValue="4" />	
+				            <f:selectItem itemLabel="FABRICA BIMBO CHIHUAHUA"       itemValue="5" />
+				            <f:selectItem itemLabel="FABRICA BIMBO GOLFO"           itemValue="6" />
+				            <f:selectItem itemLabel="FABRICA BIMBO TOLUCA"          itemValue="7" />
+				            <f:selectItem itemLabel="FABRICA BIMBO DEL SURESTE"     itemValue="8" />
+				            <f:selectItem itemLabel="FABRICA BIMBO NORTE"   	 	itemValue="9" />
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO SANTA FE I" 	itemValue="10" />
+				            <f:selectItem itemLabel="FABRICA BIMBO PUEBLA"         	itemValue="11" />
+				            <f:selectItem itemLabel="FABRICA MARINELA OCCIDENTE"    itemValue="12" />
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO SANTA FE"    itemValue="13" />
+				            <f:selectItem itemLabel="FABRICA BARCEL OCCIDENTE"      itemValue="14" />
+				            <f:selectItem itemLabel="FABRICA BARCEL MEXICO TOLUCA"  itemValue="15" />    
+				            <f:selectItem itemLabel="FABRICA BIMBO SAN LUIS"        itemValue="16" />        
+				        </p:selectOneMenu>
+			    	</td>
+			    </tr> 
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo 2" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtModelo" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.modelo}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Acción" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtAccion" style="width: 150px;" /> -->
+			    		<p:selectOneMenu id="txtAccion" style="width:150px" value="#{equipoBusBean.equipoBusquedaModelo.accion}">
+				            <f:selectItem itemLabel=""             	 	itemValue="" />
+				            <f:selectItem itemLabel="RENOVADO"       	itemValue="1" />
+				            <f:selectItem itemLabel="PROGRAMADO" 	    itemValue="2" />
+				            <f:selectItem itemLabel="NO CONTESTA"       itemValue="3" />
+				            <f:selectItem itemLabel="NO PROCEDE CAMBIO" itemValue="4" />	            
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F Programacion" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtFProgramacion" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.programacion}"/></td>
+			    </tr> 
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Proveedor" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    		<!-- <p:inputText id="txtProveedor" style="width: 488px;" /> -->
+			    		<p:selectOneMenu id="txtProveedor" style="width:488px" value="#{equipoBusBean.equipoBusquedaModelo.proveedor}">
+				            <f:selectItem itemLabel=""             	 		itemValue="" />
+				            <f:selectItem itemLabel="LEAN BUSINESS GROUP"   itemValue="LBG" />
+				            <f:selectItem itemLabel="NTT" 					itemValue="NTT" />
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Id Equipo" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtID" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.id}" /></td>
+			    </tr> 			    
+			    <tr>
+			    	<td width="15%" height="45px" colspan="6">
+			    		<p:commandButton value="Buscar Equipo" id="btnBuscar" style="width: 125px; margin-right:20px;" action="#{equipoBusBean.buscarEquiposFiltrosPantalla}" update="dtbleEquipos" />
+			    		<p:commandButton value="Salir"         id="btnSalir"  style="width: 125px; margin-right:20px;" action="#{equipoBusBean.cerrarSesionBsuqueda}" />
+			    	</td>
+			    </tr>			    
+			    </table>
+	    
+	    	</td>
+	    </tr>
+	    </table>
+	    
+	    	    
+	    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+	    <tr><td height="30px" style="padding-left: 5px;" bgcolor="#4682B4"><p:outputLabel value="Resultados de la búsqueda" /></td></tr>
+	    <tr>
+	    	<td>
+			    <p:dataTable id="dtbleEquipos" var="equipo" value="#{equipoBusBean.equipoBusquedaModelo.equipos}" 
+			    	rows="5" paginator="true" paginatorposition="bottom" 
+                 	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 	currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 	rowsPerPageTemplate="5,10,15" >
+                 	<p:column headerText="Id" width="80px">
+				        <h:outputText value="#{equipo.id}" />
+				    </p:column>
+				    <p:column headerText="Estatus">
+				        <h:outputText value="#{equipo.estatus}" />
+				    </p:column>	 
+				    <p:column headerText="Region">
+				        <h:outputText value="#{equipo.region}" />
+				    </p:column>	 
+				    <p:column headerText="Localidad">
+				        <h:outputText value="#{equipo.localidad}" />
+				    </p:column>	
+				    <p:column headerText="Modelo">
+				        <h:outputText value="#{equipo.modelo}" />
+				    </p:column> 
+				    <p:column headerText="Marca">
+				        <h:outputText value="#{equipo.marca}" />
+				    </p:column> 
+				    <p:column headerText="Modelo 2">
+				        <h:outputText value="#{equipo.modelo_nuevo}" />
+				    </p:column>
+				    <p:column headerText="Accion">
+				        <h:outputText value="#{equipo.accion}" />
+				    </p:column>
+				    <p:column headerText="Proveedor">
+				        <h:outputText value="#{equipo.proveedor}" />
+				    </p:column> 
+				    <p:column style="width:35px">
+			            <p:commandButton value="..." style="width: 40px;" action="#{equipoBusBean.buscaRegistroEquipo(equipo)}" />
+			        </p:column>
+				</p:dataTable> 
+			</td>
+		</tr>
+		</table>
+	    
+	    <!-- <table width="100%" border="1" cellpadding="0" cellspacing="0" align="left">
+	    <tr> 
+	    	<td height="45px" colspan="6"><p:outputLabel value="Resultados" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="Estatus" /></td>
+	    	<td height="35px"><p:outputLabel value="Región" /></td>
+	    	<td height="35px"><p:outputLabel value="Localidad" /></td>
+	    	<td height="35px"><p:outputLabel value="Bodega" /></td>
+	    	<td height="35px"><p:outputLabel value="Modelo2" /></td>
+	    	<td height="35px"><p:outputLabel value="F Programacion" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="RENOVADO" /></td>
+	    	<td height="35px"><p:outputLabel value="CENTRAL" /></td>
+	    	<td height="35px"><p:outputLabel value="CEDIS ABASTEX" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    	<td height="35px"><p:outputLabel value="LATITUDE 5401" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="PENDIENTES" /></td>
+	    	<td height="35px"><p:outputLabel value="METRO" /></td>
+	    	<td height="35px"><p:outputLabel value="FABRICA BIMBO SANTA MARIA" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    	<td height="35px"><p:outputLabel value="LATITUDE 5401" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="POR RENOVAR" /></td>
+	    	<td height="35px"><p:outputLabel value="BAJIO" /></td>
+	    	<td height="35px"><p:outputLabel value="CEDIS TULTIPARK II" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    	<td height="35px"><p:outputLabel value="LATITUDE 5401" /></td>
+	    	<td height="35px"><p:outputLabel value="-" /></td>
+	    </tr>
+	    </table> -->
+	</h:form>
+</h:body>
+</html>

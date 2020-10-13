@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Pagos: Agua Potable | Impuesto Predial</title>	
+	
+	<style>               
+        .Bimage{background-image:url("img/FondoIntegrPagos.jpg");background-repeat: no-repeat; height: 300px;width: 500px;" }        
+    </style>
+    
+    <script type="text/javascript">			
+		function validaCuenta(e) {
+			// var tecla = window.event.keyCode;
+			var tecla;
+			if ( window.event ) { 	// para IE, Chrome 
+				tecla = window.event.keyCode; } 
+			else if( e.which ) {	// para Firefox
+				tecla = e.which; }			
+			// alert("Tecla: " + tecla);
+			
+			var cveDetTram = document.getElementById("frmIntPago:txtCveDefTramite").value;
+			if ( cveDetTram == "286" ) {
+				if ( tecla == 8 || tecla == 48 || tecla == 49 || tecla == 50 ||  tecla == 51 || tecla == 52 || tecla == 53 || tecla == 54 || 
+						tecla == 55 ||  tecla == 56 ||  tecla == 57 ) {
+					return  true;	
+				} else {
+					return  false;
+				}				
+			} else if ( cveDetTram == "285" ) {
+				if ( tecla == 8 || tecla == 45 || tecla == 48 || tecla == 49 || tecla == 50 ||  tecla == 51 || 
+						tecla == 52 || tecla == 53 || tecla == 54 || tecla == 55 || tecla == 56 || tecla == 57 || tecla == 65 || tecla == 66 || 
+						tecla == 67 || tecla == 68 || tecla == 69 || tecla == 70 || tecla == 71 || tecla == 72 || tecla == 73 || tecla == 74 || 
+						tecla == 75 || tecla == 76 || tecla == 77 || tecla == 78 || tecla == 79 || tecla == 80 || tecla == 81 || tecla == 82 || 
+						tecla == 83 || tecla == 84 || tecla == 85 || tecla == 86 || tecla == 87 || tecla == 88 || tecla == 89 || tecla == 90 ) {
+					return  true;	
+				} else {
+					return  false;
+				} 						
+			}			
+			
+		}
+		function validaDescripcion(e) {
+			var tecla;
+			if ( window.event ) { 	// para IE, Chrome 
+				tecla = window.event.keyCode; } 
+			else if( e.which ) {	// para Firefox
+				tecla = e.which; }
+									
+			if ( tecla == 8 || tecla == 32 || tecla == 65 || tecla == 66 || tecla == 67 || tecla == 68 || tecla == 69 || tecla == 70 || tecla == 71 || tecla == 72 || tecla == 73 || 
+					tecla == 74 || tecla == 75 || tecla == 76 || tecla == 77 || tecla == 78 || tecla == 79 || tecla == 80 || tecla == 81 || tecla == 82 || tecla == 83 || 
+					tecla == 84 || tecla == 85 || tecla == 86 || tecla == 87 || tecla == 88 || tecla == 89 || tecla == 90 || tecla == 8) {
+				return  true;	
+			} else {
+				return  false;
+			}
+		}
+		</script>
+</h:head>
+
+<h:body styleClass="Bimage">	
+
+	<h:form id="frmIntPago">
+		<br/>
+		<!-- Tabla para colocar la informacion  -->
+		<table width="350px" align="center" border="0" cellpadding="0" cellspacing="0">		
+		<!-- <tr> <td> <h:graphicImage id="image" alt="jsf-sun" url="/img/FondoIntegracionPagos.jpg"> </h:graphicImage> </td> </tr> -->
+		<tr>
+			<td align="center">
+				
+				<table width="300px" align="center" border="0">
+				<tr>
+					<td> 
+						<font color="#90EE90" size="2" face="arial">
+							<p>Aquí usted puede descargar la orden de pago.</p>
+							<p>Este recibo de pago ya incluye los descuentos por pronto pago.</p>
+						</font> 
+					</td>
+				</tr>				
+				</table>
+								
+			</td>
+		</tr>			
+		<tr>
+			<td>
+				<br/>
+				<table width="250px" align="center" border="1" bordercolor="white" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+		
+						<table width="180px" align="center" border="0">
+						<tr><td> <br /> </td></tr>
+						<tr>
+							<td align="center" height="35px"> 
+								<font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Ingrese su número de Cuenta: " /></font>
+								<font color="#90EE90" size="2" face="arial"><h:outputLabel value="#{integrPagoControlador.integrPagoModelo.lblComentCuenta}" id="lblComentCuenta" /></font>
+							</td>				
+						</tr> 
+						<tr>
+							<td align="center" height="35px"> <h:inputText value="#{integrPagoControlador.integrPagoModelo.cuenta}" id="txtCuenta" maxlength="15" onkeypress="return validaCuenta(event);" /> </td>				
+						</tr>
+						<tr>
+							<td align="center" height="35px"> <font color="#FFFFFF" size="2" face="arial">Seleccione su localidad:</font> </td>				
+						</tr> 
+						<tr>
+							<td align="center" height="35px">  
+								<h:selectOneMenu value="#{integrPagoControlador.integrPagoModelo.selctdLocalidad}">
+									<f:selectItem itemValue="0" itemLabel="Seleccione un valor" />
+							        <f:selectItem itemValue="S" itemLabel="CIUDAD SAHAGUN" />
+							        <f:selectItem itemValue="T" itemLabel="TEPEAPULCO" />
+						    	</h:selectOneMenu>
+							</td>				
+						</tr>
+						<tr>
+							<td align="center" height="35px"> 
+								<font color="#FFFFFF" size="2" face="arial">Ingrese UN nombre o apellido del propietario sin acentos: </font>
+								<font color="#90EE90" size="2" face="arial">Solo Mayúsculas</font> 
+							</td>				
+						</tr> 
+						<tr>
+							<td align="center" height="35px"> <h:inputText value="#{integrPagoControlador.integrPagoModelo.nombBusq}" id="txtNombre" maxlength="120" onkeypress="return validaDescripcion(event);" /> </td>				
+						</tr>						
+						<tr>
+							<td align="center" height="35px"> <h:commandButton value="Buscar" action="#{integrPagoControlador.buscaInformacionCiudadano}"/> </td>											
+						</tr>						
+						<tr><td> <br /> </td></tr>
+						</table>
+			
+					</td>
+				</tr>
+				</table>
+			</td>
+		</tr>		
+		<tr>
+			<br />
+			<td align="center"> 
+				<font color="#FF4500" size="2" face="arial"><h:outputLabel value="#{integrPagoControlador.integrPagoModelo.mensaje}" id="lblMensaje" /></font>
+			</td>
+		</tr>	
+		</table>
+	
+		<h:panelGrid columns="2">	
+			<!-- <h:outputLabel   value="Cuenta: " />
+			<h:inputText     value="#{integrPagoControlador.integrPagoModelo.cuenta}" id="txtCuenta" /> 
+			
+			<h:outputLabel   value="Localidad: " />
+				<h:selectOneMenu value="#{integrPagoControlador.integrPagoModelo.selctdLocalidad}">
+				<f:selectItem itemValue="0" itemLabel="Seleccione un valor" />
+	            <f:selectItem itemValue="S" itemLabel="CIUDAD SAHAGUN" />
+	            <f:selectItem itemValue="T" itemLabel="TEPEAPULCO" />
+	         </h:selectOneMenu> -->
+			
+			<h:outputLabel   value="" />		
+			<h:commandButton value="Aceptar" action="#{integrPagoControlador.generaIntegracionPagoPDF}" rendered="false"/>						
+			<h:inputHidden   value="#{integrPagoControlador.integrPagoModelo.cveDefTramite}" id="txtCveDefTramite"/>
+			<!-- <h:inputText     value="#{integrPagoControlador.integrPagoModelo.cveDefTramite}" id="txtCveDefTramite" />  -->
+		</h:panelGrid>
+		
+		<h:panelGrid columns="1">
+			<!-- <h:outputLabel value="#{integrPagoControlador.integrPagoModelo.mensaje}"    id="lblMensaje" /> -->
+			<h:outputLabel value="#{integrPagoControlador.integrPagoModelo.urlReporte}" id="lblUrlReporte" />			
+		</h:panelGrid>
+		
+	</h:form>
+</h:body>
+</html>

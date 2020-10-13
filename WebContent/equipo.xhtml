@@ -1,0 +1,301 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:c="http://java.sun.com/jsp/jstl/core"
+	    xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	<h:form id="form">
+	    <p:growl id="growl" showDetail="true" sticky="true" />
+	    
+     	<!-- Tabla Principal para la busqueda de la aplicacion -->
+	    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+	    <tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;">
+	    		<p:outputLabel value="Inicio / Editar / Equipo" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;" >
+	    		<p:outputLabel value="" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;" bgcolor="#4682B4">
+	    		<p:outputLabel value="Información de estatus y regionalización" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="135px" style="padding-left: 5px; padding-right: 5px;">
+	    		
+	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Estatus" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtEstatus" style="width: 150px;" />  -->
+			    		<p:selectOneMenu id="txtEstatus" style="width:150px" value="#{equipoBean.equipoModelo.est}">
+				            <f:selectItem itemLabel="" itemValue="" />
+				            <f:selectItem itemLabel="RENOVADO"    itemValue="1" />
+				            <f:selectItem itemLabel="POR RENOVAR" itemValue="2" />
+				            <f:selectItem itemLabel="PENDIENTES"  itemValue="3" />
+				        </p:selectOneMenu>			    		
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Región" /></td> 
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtRegion" style="width: 150px;" /> -->
+			    		<p:selectOneMenu id="txtRegion" style="width:152px" value="#{equipoBean.equipoModelo.reg}">
+				            <f:selectItem itemLabel=""             itemValue="" />
+				            <f:selectItem itemLabel="CENTRAL"      itemValue="1" />
+				            <f:selectItem itemLabel="METRO" 	   itemValue="2" />
+				            <f:selectItem itemLabel="SURESTE"      itemValue="3" />
+				            <f:selectItem itemLabel="CORPORATIVO " itemValue="4" />
+				            <f:selectItem itemLabel="NORTE"    	   itemValue="5" />
+				            <f:selectItem itemLabel="BAJIO"        itemValue="6" />
+				            <f:selectItem itemLabel="GLOBO"    	   itemValue="7" />
+				            <f:selectItem itemLabel="NOROESTE"     itemValue="8" />				            
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Localidad" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<!--  <p:inputText id="txtLocalidad" style="width: 330px;" /> -->
+			    		<!-- <p:selectOneMenu id="txtLocalidad" style="width:330px" value="#{equipoBean.equipoModelo.loc}">
+				            <f:selectItem itemLabel="" itemValue="" />
+				            <f:selectItem itemLabel="CENTRO DE SERVICIOS COMPARTIDOS"    itemValue="1" />
+				            <f:selectItem itemLabel="FABRICA BIMBO GOLFO" 				 itemValue="2" />
+				            <f:selectItem itemLabel="CENTRO DE VENTAS BIMBO XOCHIMILCO"  itemValue="3" />
+				        </p:selectOneMenu> -->
+				        <p:selectOneMenu id="txtLocalidad" style="width: 330px;" value="#{equipoBean.equipoModelo.loc}">
+				            <f:selectItem itemLabel="" itemValue="" />
+				            <f:selectItems value="#{equipoBusBean.equipoBusquedaModelo.localidadesList}" />
+				        </p:selectOneMenu>
+			    	</td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Bodega" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    		<!-- <p:inputText id="txtBodega" style="width: 488px;" /> -->
+			    		<p:selectOneMenu id="txtBodega" style="width:487px" value="#{equipoBean.equipoModelo.bod}">				            
+				            <!-- <f:selectItem itemLabel="BIMBO, S.A. DE C.V."       				itemValue="1" />
+				            <f:selectItem itemLabel="TRADICIÓN EN PASTELERÍAS S. A. DE C. V." 	itemValue="2" />
+				            <f:selectItem itemLabel="PRODUCTOS RICOLINO SAPI DE CV"       		itemValue="3" />
+				            <f:selectItem itemLabel="BARCEL, S.A. DE C.V." 						itemValue="4" />	
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO S.A. DE C.V."       		itemValue="5" />
+				            <f:selectItem itemLabel="Equipo de uso comun"           			itemValue="6" />
+				            <f:selectItem itemLabel="MOLDES Y EXHIBIDORES, S.A DE C.V."         itemValue="7" /> -->
+				            <f:selectItem itemLabel=""             	 				itemValue=""  />
+				            <f:selectItem itemLabel="FABRICA BIMBO IRAPUATO"       	itemValue="1" />
+				            <f:selectItem itemLabel="FABRICA BIMBO AZCAPOTZALCO"    itemValue="2" />
+				            <f:selectItem itemLabel="GLOBAL SERVICES"       		itemValue="3" />
+				            <f:selectItem itemLabel="FABRICA BIMBO MEXICALI"       	itemValue="4" />
+				            <f:selectItem itemLabel="FABRICA BIMBO CHIHUAHUA"       itemValue="5" />
+				            <f:selectItem itemLabel="FABRICA BIMBO GOLFO"       	itemValue="6" />
+				            <f:selectItem itemLabel="FABRICA BIMBO TOLUCA"       	itemValue="7" />
+				            <f:selectItem itemLabel="FABRICA BIMBO DEL SURESTE"     itemValue="8" />
+				            <f:selectItem itemLabel="FABRICA BIMBO NORTE"       	itemValue="9" />
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO SANTA FE I"	itemValue="10" />
+				            <f:selectItem itemLabel="FABRICA BIMBO PUEBLA"       	itemValue="11" />
+				            <f:selectItem itemLabel="FABRICA MARINELA OCCIDENTE"    itemValue="12" />
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO SANTA FE "   itemValue="13" />
+				            <f:selectItem itemLabel="FABRICA BARCEL OCCIDENTE"      itemValue="14" />
+				            <f:selectItem itemLabel="FABRICA BARCEL MEXICO TOLUCA"  itemValue="15" />
+				            <f:selectItem itemLabel="FABRICA BIMBO SAN LUIS"       	itemValue="16" />
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="56%" style="padding-left: 5px;" colspan="4">
+			    		<p:outputLabel value="Razón Social del Usuario " />
+			    		<!-- <p:inputText id="txtRSocial" style="width: 405px;" /> -->
+			    		<p:selectOneMenu id="txtRSocial" style="width:442px" value="#{equipoBean.equipoModelo.raz}">
+				            <f:selectItem itemLabel=""             	 	            			itemValue="" />
+				            <f:selectItem itemLabel="BIMBO, S.A. DE C.V."       				itemValue="1" />
+				            <f:selectItem itemLabel="TRADICIÓN EN PASTELERÍAS S. A. DE C. V." 	itemValue="2" />
+				            <f:selectItem itemLabel="PRODUCTOS RICOLINO SAPI DE CV"       		itemValue="3" />
+				            <f:selectItem itemLabel="BARCEL, S.A. DE C.V." 						itemValue="4" />	
+				            <f:selectItem itemLabel="CORPORATIVO BIMBO S.A. DE C.V."       		itemValue="5" />
+				            <f:selectItem itemLabel="Equipo de uso comun"           			itemValue="6" />
+				            <f:selectItem itemLabel="MOLDES Y EXHIBIDORES, S.A DE C.V."         itemValue="7" />
+				        </p:selectOneMenu>
+			    	</td>			    	
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Id Empleado" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtIdEmpleado" style="width: 330px;" value="#{equipoBean.equipoModelo.empleado}" />
+			    	</td>
+			    </tr>
+			    </table>
+	    		
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;" bgcolor="#4682B4">
+	    		<p:outputLabel value="Información del equipo a Reemplazar" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="160px" style="padding-left: 5px; padding-right: 5px;">
+	    		
+	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNoSerie"     style="width: 150px;"  value="#{equipoBean.equipoModelo.serie_cambio}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreSerie"  style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_cambio}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Estatus" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtEstatusCmbio" style="width: 150px;"  value="#{equipoBean.equipoModelo.estatus_cambio}" /></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Marca" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtMarca" style="width: 150px;" value="#{equipoBean.equipoModelo.marca}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtModelo" style="width: 150px;" value="#{equipoBean.equipoModelo.modelo}" /></td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td> 
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Usuario" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtUsuario" style="width: 488px;" value="#{equipoBean.equipoModelo.nombre_cambio}" /></td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie Rc" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtSerieRecambio" style="width: 150px;" value="#{equipoBean.equipoModelo.serie_renombre}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre Rc" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreRc" style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_recambio}" /></td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td> 
+			    </tr>
+			    </table>
+			   
+			</td>
+		</tr>
+		<tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;" bgcolor="#4682B4">
+	    		<p:outputLabel value="Información del equipo Nuevo" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="130px" style="padding-left: 5px; padding-right: 5px;">
+	    		
+	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNoSerieNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.serie_nuevo}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreSerieNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_nuevo}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Compra" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtOCompra" style="width: 150px;" value="#{equipoBean.equipoModelo.orden}" /></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtModeloNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.modelo_nuevo}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Acción" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<!-- <p:inputText id="txtAccion" style="width: 488px;" /> -->
+			    		<p:selectOneMenu id="txtAccion" style="width: 150px" value="#{equipoBean.equipoModelo.acc}">
+				            <f:selectItem itemLabel=""             	 	itemValue="" />
+				            <f:selectItem itemLabel="RENOVADO"       	itemValue="1" />
+				            <f:selectItem itemLabel="PROGRAMADO" 	    itemValue="2" />
+				            <f:selectItem itemLabel="NO CONTESTA"       itemValue="3" />
+				            <f:selectItem itemLabel="NO PROCEDE CAMBIO" itemValue="4" />	            
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Fecha Prog" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtOFProgramacion" style="width: 150px;" value="#{equipoBean.equipoModelo.programado}" /></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Proveedor" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    		<!-- <p:inputText id="txtProveedor" style="width: 488px;" /> -->
+			    		<p:selectOneMenu id="txtProveedor" style="width:488px" value="#{equipoBean.equipoModelo.proveedor}">
+				            <f:selectItem itemLabel=""             	 		itemValue="" />
+				            <f:selectItem itemLabel="LEAN BUSINESS GROUP"   itemValue="LBG" />
+				            <f:selectItem itemLabel="NTT" 					itemValue="NTT" />
+				        </p:selectOneMenu>
+			    	</td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
+			    </tr>
+			    </table>
+			   
+			</td>
+		</tr>
+		<tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;" bgcolor="#4682B4">
+	    		<p:outputLabel value="Información General" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="160px" style="padding-left: 5px; padding-right: 5px;">
+	    		
+	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Comentarios" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtComentarios" style="width: 488px;" value="#{equipoBean.equipoModelo.comentarios}" /></td>
+			    	<!-- <td width="42%" style="padding-left: 5px;" colspan="2"></td> -->
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Garantia" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtGarantia" style="width: 150px;" value="#{equipoBean.equipoModelo.garantia}" /></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Archivo" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtArchivo" style="width: 488px;" value="#{equipoBean.equipoModelo.archivo}" /></td>
+			    	<!-- <td width="42%" style="padding-left: 5px;" colspan="2"></td> -->
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="S. O." /></td> 
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtSistema" style="width: 330px;" value="#{equipoBean.equipoModelo.sistema}" /></td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F.Alta" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtFechaAlta" style="width: 150px;" value="#{equipoBean.equipoModelo.alta}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Est.Cntrl" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtEstControl" style="width: 150px;" value="#{equipoBean.equipoModelo.estatus_control}" /></td>
+			    	<td width="10%" style="padding-left: 5px;" colspan="2"></td>
+			    </tr> 
+			    <tr height="35px">			    	
+			    	<td width="42%" style="padding-left: 5px;" colspan="6"></td>
+			    </tr>
+			    <!-- <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Creado Por" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtCreadoPor" style="width: 150px;" /></td>
+			    	<td width="20%" style="padding-left: 5px;" colspan="2"></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F Alta" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtFAlta" style="width: 150px;" /></td>
+			    </tr> -->
+			    <!-- <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modif Por" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtModificadoPor" disabled="true" style="width: 150px;" value="#{equipoBean.equipoModelo.modificado_por}" /></td>
+			    	<td width="20%" style="padding-left: 5px;" colspan="2"></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F Modifica" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtFModifica"     disabled="true" style="width: 150px;" value="#{equipoBean.equipoModelo.fecha_modifica}" /></td>
+			    </tr> -->
+			    </table>
+			   
+			</td>
+		</tr>
+		<tr>
+	    	<td colspan="6" height="30px" style="padding-left: 5px;">
+	    		<p:outputLabel value="" />
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td colspan="6" height="50px" style="padding-left: 5px; padding-right: 5px;">
+	    		
+	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="45px">
+			    	<td colspan="6" align="left">
+			    		<p:commandButton value="Guardar cambios" style="width: 150px; margin-right:20px;" action="#{equipoBean.actualizaInformacionEquipo}" update="growl" />
+			    		<p:commandButton value="Regresar"  style="width: 150px; margin-right:20px;" action="#{equipoBean.regresarBusqueda}" />
+			    		<!-- <p:inputText id="txtId" style="width: 150px;" value="#{equipoBean.equipoModelo.id}"  /> -->
+			    		<h:inputHidden id="txtId" style="width: 150px;" value="#{equipoBean.equipoModelo.id}"  />
+			    	</td>
+			    </tr>	
+			    </table>
+			   
+			</td>
+		</tr>
+	    </table>	    	    
+	    
+	</h:form>
+</h:body>
+</html>

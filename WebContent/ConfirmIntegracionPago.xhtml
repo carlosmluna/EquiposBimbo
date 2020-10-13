@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Integración de Pagos (Confirmar Información)</title>
+	
+	<style>               
+        .Bimage{background-image:url("img/FondoIntegrPagos.jpg");background-repeat: no-repeat;height: 300px;width: 500px;" }        
+    </style>
+</h:head>
+
+<h:body styleClass="Bimage">
+	<h:form>
+		<br />
+		
+		<table width="350px" align="center" border="0" cellpadding="0" cellspacing="0">		
+		<!-- <tr> <td> <h:graphicImage id="image" alt="jsf-sun" url="/img/FondoIntegracionPagos.jpg"> </h:graphicImage> </td> </tr> -->
+		<tr>
+			<td align="center">
+				
+				<table width="300px" align="center" border="0">
+				<tr>
+					<td> 
+						<font color="#90EE90" size="2" face="arial">
+							<p>Aquí usted puede descargar la orden de pago.</p>
+							<p>Este recibo de pago ya incluye los descuentos por pronto pago.</p>
+						</font> 
+					</td>
+				</tr>				
+				</table>				
+			
+			</td>
+		</tr>		
+		</table>
+		<br />
+		
+		<table width="400px" align="center" border="1" bordercolor="white" cellpadding="0" cellspacing="0">	
+		<tr>
+			<td>
+				<br />
+				
+				<table width="370px" align="center" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="35px" width="135px"> <font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Número de Cuenta:" /></font> </td>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputText  value="#{integrPagoControlador.integrPagoModelo.cuenta}" id="txtCuenta"/></font> </td>					
+				</tr>
+				<tr>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Localidad:" /></font> </td>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputText  value="#{integrPagoControlador.integrPagoModelo.descrLocalidad}" id="txtLocalidad"/></font> </td>					
+				</tr>
+				<tr>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Nombre:" /></font> </td>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputText  value="#{integrPagoControlador.integrPagoModelo.nombre}" id="txtNombre"/></font> </td>					
+				</tr>
+				<tr>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Domicilio:" /></font> </td>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputText  value="#{integrPagoControlador.integrPagoModelo.domicilio}" id="txtDomicilio"/></font> </td>					
+				</tr>
+				<!-- Adicion del campo Monto para la integracion Banorte / CLF / Marzo 15 -->
+				<tr>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputLabel value="Monto a Pagar:" /></font> </td>
+					<td height="35px"> <font color="#FFFFFF" size="2" face="arial"><h:outputText  value="#{integrPagoControlador.integrPagoModelo.subtotal}" id="txtSubtotal"/></font> </td>					
+				</tr>
+				</table>
+				
+				<br />
+				
+			</td>
+		</tr>			
+		</table>
+		<br /><br />
+		
+		<!-- <table width="400px" align="center" border="0" cellpadding="0" cellspacing="0">	
+		<tr>
+			<td align="center">
+				<font color="#FF4500" size="2" face="arial"><h:outputLabel value="#{integrPagoControlador.integrPagoModelo.mensaje}" id="lblMensaje" /></font>
+			</td>
+		</tr>	
+		</table>
+		<br /><br /> -->
+		
+		<table width="250px" align="center" border="0" cellpadding="0" cellspacing="0">				
+		<tr>
+			<td> 
+				<h:panelGrid columns="3">
+					<h:commandButton value="Regresar" action="#{integrPagoControlador.regresarPaginaInicial}"/>
+					<h:commandButton value="Generar formato de pago" action="#{integrPagoControlador.generaIntegracionPagoPDF}"/>	
+					<h:commandButton value="Realizar Pago" action="#{integrPagoControlador.muestraPantallaPagoimpuestos}"/>					
+				</h:panelGrid>			
+			</td>					
+		</tr>				
+		</table> 
+			
+		<h:inputHidden value="#{integrPagoControlador.integrPagoModelo.urlReporte}"      id="hdnUrlReporte" />
+		<h:inputHidden value="#{integrPagoControlador.integrPagoModelo.cveDefTramite}"   id="hdnCveDefTramite" />
+		<h:inputHidden value="#{integrPagoControlador.integrPagoModelo.selctdLocalidad}" id="hdnLocalidad" />	
+		
+	</h:form>
+</h:body>
+</html>

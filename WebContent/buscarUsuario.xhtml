@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:c="http://java.sun.com/jsp/jstl/core"
+	    xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script>
+		function check(){
+			var message = document.getElementById("form:input");
+			if(confirm("Are you sure sending message "+ message.value + " !")){
+				return true;
+			}
+			return false;
+		}
+	</script>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<table width="780px" border="0" cellpadding="0" cellspacing="0" align="left">
+		<tr>
+			<td width="85%" height="35px"><p:outputLabel value="Inicio / Buscar / Equipo" /></td>
+		</tr>
+	    </table>
+	    	    
+	    <!-- Tabla Principal para la busqueda de la aplicacion -->
+	    <table width="100%" border="1" cellpadding="0" cellspacing="0" align="left">
+	    <tr> <td height="30px"><p:outputLabel value="Filtros de búsqueda" /></td></tr>
+	    <tr>
+	    	<td height="100px" style="padding-left: 5px;">
+	    	
+		    	<!-- Tabla para el filtros de busqueda -->
+			    <table width="50%" border="1" cellpadding="0" cellspacing="0" align="left">
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Usuario" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtUsuario" style="width: 150px;" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Administrador" /></td>
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtAdmin" style="width: 150px;" /></td>
+			    </tr>  			    
+			    <tr>
+			    	<td width="15%" height="45px" colspan="4">
+			    		<p:commandButton value="Buscar" style="margin-right:20px;" />
+			    		<p:commandButton value="Salir" style="margin-right:20px;" />
+			    	</td>			    	
+			    </tr>			    
+			    </table>
+	    
+	    	</td>
+	    </tr>
+	    </table>
+	    
+	    <table width="100%" border="1" cellpadding="0" cellspacing="0" align="left">
+	    <tr> 
+	    	<td height="45px" colspan="6"><p:outputLabel value="Resultados" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="Usuario" /></td>
+	    	<td height="35px"><p:outputLabel value="Administrador" /></td>
+	    	<td height="35px"><p:outputLabel value="Creado por" /></td>
+	    	<td height="35px"><p:outputLabel value="Fecha Alta" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="CLUNA" /></td>
+	    	<td height="35px"><p:outputLabel value="SI" /></td>
+	    	<td height="35px"><p:outputLabel value="SYSADMIN" /></td>
+	    	<td height="35px"><p:outputLabel value="01/SEP/2020" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="ASUAREZ" /></td>
+	    	<td height="35px"><p:outputLabel value="NO" /></td>
+	    	<td height="35px"><p:outputLabel value="SYSADMIN" /></td>
+	    	<td height="35px"><p:outputLabel value="22/SEP/2020" /></td>
+	    </tr>
+	    <tr align="center"> 
+	    	<td height="35px"><p:outputLabel value="GLOPEZ" /></td>
+	    	<td height="35px"><p:outputLabel value="NO" /></td>
+	    	<td height="35px"><p:outputLabel value="SYSADMIN" /></td>
+	    	<td height="35px"><p:outputLabel value="28/SEP/2020" /></td>
+	    </tr>
+	    </table>
+	</h:form>
+</h:body>
+</html>
