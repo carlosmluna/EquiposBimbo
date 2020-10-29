@@ -37,6 +37,7 @@ public class EquipoModelo {
 	private int bod;
 	private int raz;
 	private int acc;
+	private int ctrl;
 	// Cambio el viernes 2 Octubre 2020 
 	private String  alta;
 	private String  estatus_control;
@@ -46,6 +47,10 @@ public class EquipoModelo {
 	private String modificado_por;
 	private String fecha_modifica;
 	private List<SelectItem> localidadesList;	
+	// Campos Nuevos 26Oct2020
+	private String mes_renovacion;
+	private String ticket;
+	private String comm_control;
 	
 	
 	public EquipoModelo() { }
@@ -54,9 +59,10 @@ public class EquipoModelo {
 			String empleado, String serie_cambio, String nombre_cambio, String estatus_cambio, String marca,
 			String modelo, String nombre_nuevo, String serie_nuevo, String modelo_nuevo, String orden, String accion,
 			String programado, String proveedor, String comentarios, String archivo, String garantia, String sistema,
-			int est, int reg, int loc, int bod, int raz, int acc, String alta,
+			int est, int reg, int loc, int bod, int raz, int acc, int ctrl, String alta,
 			String estatus_control, String nombre_recambio, String serie_renombre, String modificado_por,
-			String fecha_modifica, List<SelectItem> localidadesList) {
+			String fecha_modifica, List<SelectItem> localidadesList, String mes_renovacion, String ticket,
+			String comm_control) {
 		this.id = id;
 		this.estatus = estatus;
 		this.region = region;
@@ -86,6 +92,7 @@ public class EquipoModelo {
 		this.bod = bod;
 		this.raz = raz;
 		this.acc = acc;
+		this.ctrl = ctrl;
 		this.alta = alta;
 		this.estatus_control = estatus_control;
 		this.nombre_recambio = nombre_recambio;
@@ -93,6 +100,10 @@ public class EquipoModelo {
 		this.modificado_por = modificado_por;
 		this.fecha_modifica = fecha_modifica;
 		this.localidadesList = localidadesList;
+		// 26Oct2020 - Campos Nuevos
+		this.mes_renovacion = mes_renovacion;
+		this.ticket 		= ticket;
+		this.comm_control 	= comm_control;
 	}
 	
 	
@@ -269,6 +280,12 @@ public class EquipoModelo {
 	}
 	public void setAcc(int acc) {
 		this.acc = acc;
+	}	
+	public int getCtrl() {
+		return ctrl;
+	}
+	public void setCtrl(int ctrl) {
+		this.ctrl = ctrl;
 	}
 	public String getAlta() {
 		return alta;
@@ -311,5 +328,23 @@ public class EquipoModelo {
 	}
 	public void setLocalidadesList(List<SelectItem> localidadesList) {
 		this.localidadesList = localidadesList;
+	}
+	public String getMes_renovacion() {
+		return mes_renovacion;
+	}
+	public void setMes_renovacion(String mes_renovacion) {
+		this.mes_renovacion = mes_renovacion;
+	}
+	public String getTicket() {
+		return ticket;
+	}
+	public void setTicket(String ticket) {
+		this.ticket = ticket;
+	}
+	public String getComm_control() {
+		return comm_control;
+	}
+	public void setComm_control(String comm_control) {
+		this.comm_control = comm_control;
 	}
 }

@@ -24,14 +24,17 @@ import java.net.HttpURLConnection;
 public class UsuariosService {
 	Constantes constantes = new Constantes();
 	
-	public UsuarioDTO buscarUsuarioMSSericcio( String usuario ) {		
-		System.out.println("Service {} - Se realiza la consulta de un 'Usuario' en la BAse de datos Mediante WS-Rest");
+	public UsuarioDTO buscarRegistroUsuario( String usuario ) {		
+		System.out.println("Service {} - Se realiza la consulta de un 'Usuario' en la Base de datos Mediante WS-Rest");
 		UsuarioDTO usarioDTO = null;
 		String jsonUsuario   = "";
 		
 		try {
 
-            URL url = new URL("http://localhost:8050/usuario/usuario-consultarPorId/" + usuario);	//your url i.e fetch data from .
+            // URL url = new URL("http://localhost:8050/usuario/usuario-consultarPorId/" + usuario);	//your url i.e fetch data from .
+            String urlServicio = "http://" + constantes.IP_APLICAION + constantes.USR_CONTEXT + "/usuario/usuario-consultarPorId/" + usuario;
+			System.out.println("urlServicio: " + urlServicio);
+            URL url = new URL(urlServicio);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -57,13 +60,15 @@ public class UsuariosService {
 		return usarioDTO;
 	}
 	
-	public List<UsuarioDTO> buscarUsuarioMSSericio( ) {		
+	public List<UsuarioDTO> buscarUsuarios( ) {		
 		System.out.println("Service {} - Se realiza la consulta de 'Usuarios' en la Base de datos Mediante WS-Rest");
 		List<UsuarioDTO> usuarios = new ArrayList<UsuarioDTO>();
 		String jsonLocalidad      = "";
 		
 		try {
-            URL url = new URL("http://localhost:8050/catalogo/catlocalidades-consultar");	//your url i.e fetch data from .
+			String urlServicio = "http://" + constantes.IP_APLICAION + constantes.CAT_CONTEXT + "/catalogo/catlocalidades-consultar";
+			System.out.println("urlServicio: " + urlServicio);
+			URL url = new URL(urlServicio);	//your url i.e fetch data from .
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -99,7 +104,7 @@ public class UsuariosService {
 		return usuarios;
 	}
 	
-	public EquipoDTO actualziarUsuarioMSServivio( EquipoModelo equipoModelo, String suaurio ) {		
+	public EquipoDTO actualziarUsuario( EquipoModelo equipoModelo, String suaurio ) {		
 		System.out.println("Service {} - Se realiza la consulta de 'Estatus' en la Base de datos Mediante WS-Rest");
 		EquipoDTO  equipo = new EquipoDTO();
 		Utilidades utils  = new Utilidades();
@@ -138,7 +143,7 @@ public class UsuariosService {
 		return equipo;
 	}
 	
-	public EquipoDTO insertarUsuarioMSServivio( EquipoModelo equipoModelo, String suaurio ) {		
+	public EquipoDTO insertarUsuario( EquipoModelo equipoModelo, String suaurio ) {		
 		System.out.println("Service {} - Se realiza la consulta de 'Estatus' en la Base de datos Mediante WS-Rest");
 		EquipoDTO  equipo = new EquipoDTO();
 		Utilidades utils  = new Utilidades();

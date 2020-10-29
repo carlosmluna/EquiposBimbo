@@ -2,7 +2,11 @@ package mx.com.bimbo.equipos.util;
 
 public class Constantes {
 
-	public static final String IP_APLICAION = "localhost";
+	public static final String IP_APLICAION = "34.213.36.82:8080"; 	// "localhost";
+	public static final String CAT_CONTEXT  = "/CatalogosService";
+	public static final String EQP_CONTEXT  = "/EquiposService";
+	public static final String USR_CONTEXT  = "/UsuariosService";
+	
 	public static final String CHAR_VACIO   = "";
 	
 	public static final String PGE_LOGIN        = "login";

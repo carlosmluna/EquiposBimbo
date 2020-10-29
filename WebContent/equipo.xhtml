@@ -107,10 +107,11 @@
 			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
 			    </tr>
 			    <tr height="35px">
-			    	<td width="56%" style="padding-left: 5px;" colspan="4">
-			    		<p:outputLabel value="Razón Social del Usuario " />
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Razon Social" /></td>
+			    	<td width="56%" style="padding-left: 5px;" colspan="3">
+			    		<!-- <p:outputLabel value="Razón Social del Usuario " /> -->
 			    		<!-- <p:inputText id="txtRSocial" style="width: 405px;" /> -->
-			    		<p:selectOneMenu id="txtRSocial" style="width:442px" value="#{equipoBean.equipoModelo.raz}">
+			    		<p:selectOneMenu id="txtRSocial" style="width:487px" value="#{equipoBean.equipoModelo.raz}">
 				            <f:selectItem itemLabel=""             	 	            			itemValue="" />
 				            <f:selectItem itemLabel="BIMBO, S.A. DE C.V."       				itemValue="1" />
 				            <f:selectItem itemLabel="TRADICIÓN EN PASTELERÍAS S. A. DE C. V." 	itemValue="2" />
@@ -123,7 +124,7 @@
 			    	</td>			    	
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Id Empleado" /></td>
 			    	<td width="32%" style="padding-left: 5px;">
-			    		<p:inputText id="txtIdEmpleado" style="width: 330px;" value="#{equipoBean.equipoModelo.empleado}" />
+			    		<p:inputText id="txtIdEmpleado" style="width: 150px;" value="#{equipoBean.equipoModelo.empleado}" />
 			    	</td>
 			    </tr>
 			    </table>
@@ -136,36 +137,52 @@
 	    	</td>
 	    </tr>
 	    <tr>
-	    	<td colspan="6" height="160px" style="padding-left: 5px; padding-right: 5px;">
+	    	<td colspan="6" height="100px" style="padding-left: 5px; padding-right: 5px;">
 	    		
 	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
-			    <tr height="35px">
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNoSerie"     style="width: 150px;"  value="#{equipoBean.equipoModelo.serie_cambio}" /></td>
+	    		<tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreSerie"  style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_cambio}" /></td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Estatus" /></td>
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtEstatusCmbio" style="width: 150px;"  value="#{equipoBean.equipoModelo.estatus_cambio}" /></td>
-			    </tr>
+			    	<td width="56%" style="padding-left: 5px;" colspan="3">
+			    		<p:inputText id="txtNombreSerie"  style="width: 487px;" value="#{equipoBean.equipoModelo.nombre_cambio}" />			    		
+			    	</td>			    	
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtNoSerie" style="width: 150px;"  value="#{equipoBean.equipoModelo.serie_cambio}" />
+			    	</td>
+			    </tr>			    
 			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Estatus" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtEstatusCmbio" style="width: 150px;"  value="#{equipoBean.equipoModelo.estatus_cambio}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Marca" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtMarca" style="width: 150px;" value="#{equipoBean.equipoModelo.marca}" />
+			    	</td>			    	
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtModelo" style="width: 150px;" value="#{equipoBean.equipoModelo.modelo}" />
+			    	</td>
+			    </tr>
+			    <!-- <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Marca" /></td>
 			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtMarca" style="width: 150px;" value="#{equipoBean.equipoModelo.marca}" /></td>
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo" /></td>
 			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtModelo" style="width: 150px;" value="#{equipoBean.equipoModelo.modelo}" /></td>
 			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td> 
-			    </tr>
-			    <tr height="35px">
+			    </tr> -->
+			    <!-- <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Usuario" /></td>
 			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtUsuario" style="width: 488px;" value="#{equipoBean.equipoModelo.nombre_cambio}" /></td>
 			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
-			    </tr>
-			    <tr height="35px">
+			    </tr> -->
+			    <!-- <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie Rc" /></td>
 			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtSerieRecambio" style="width: 150px;" value="#{equipoBean.equipoModelo.serie_renombre}" /></td>
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre Rc" /></td>
 			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreRc" style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_recambio}" /></td>
 			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td> 
-			    </tr>
+			    </tr> -->
 			    </table>
 			   
 			</td>
@@ -176,35 +193,56 @@
 	    	</td>
 	    </tr>
 	    <tr>
-	    	<td colspan="6" height="130px" style="padding-left: 5px; padding-right: 5px;">
+	    	<td colspan="6" height="180px" style="padding-left: 5px; padding-right: 5px;">
 	    		
 	    		<table width="80%" border="0" cellpadding="0" cellspacing="0" align="left">
-			    <tr height="35px">
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNoSerieNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.serie_nuevo}" /></td>
+	    		<tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Nombre" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtNombreSerieNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.nombre_nuevo}" /></td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Compra" /></td>
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtOCompra" style="width: 150px;" value="#{equipoBean.equipoModelo.orden}" /></td>
-			    </tr>
+			    	<td width="56%" style="padding-left: 5px;" colspan="3">
+			    		<p:inputText id="txtNombreSerieNvo" style="width: 487px;" value="#{equipoBean.equipoModelo.nombre_nuevo}" />
+			    	</td>			    	
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtNoSerieNvo" style="width: 150px;"  value="#{equipoBean.equipoModelo.serie_nuevo}" />
+			    	</td>
+			    </tr>		
 			    <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Modelo" /></td>
 			    	<td width="18%" style="padding-left: 5px;">
 			    		<p:inputText id="txtModeloNvo" style="width: 150px;" value="#{equipoBean.equipoModelo.modelo_nuevo}" />
 			    	</td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Acción" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Garantia" /></td>
 			    	<td width="18%" style="padding-left: 5px;">
-			    		<!-- <p:inputText id="txtAccion" style="width: 488px;" /> -->
-			    		<p:selectOneMenu id="txtAccion" style="width: 150px" value="#{equipoBean.equipoModelo.acc}">
-				            <f:selectItem itemLabel=""             	 	itemValue="" />
-				            <f:selectItem itemLabel="RENOVADO"       	itemValue="1" />
-				            <f:selectItem itemLabel="PROGRAMADO" 	    itemValue="2" />
-				            <f:selectItem itemLabel="NO CONTESTA"       itemValue="3" />
-				            <f:selectItem itemLabel="NO PROCEDE CAMBIO" itemValue="4" />	            
-				        </p:selectOneMenu>
+			    		<p:inputText id="txtGarantia" style="width: 150px;" value="#{equipoBean.equipoModelo.garantia}" />
 			    	</td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Fecha Prog" /></td>
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtOFProgramacion" style="width: 150px;" value="#{equipoBean.equipoModelo.programado}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Sistema O" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtSistema" style="width: 200px;" value="#{equipoBean.equipoModelo.sistema}" />
+			    	</td>
+			    </tr>		    
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Orden" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtOCompra" style="width: 150px;" value="#{equipoBean.equipoModelo.orden}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F. Alta" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtFechaAlta" style="width: 150px;" value="#{equipoBean.equipoModelo.alta}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Fecha de Programación" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtOFProgramacion" style="width: 150px;" value="#{equipoBean.equipoModelo.programado}" />
+			    	</td>
+			    </tr>
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Mes Renovacion" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtMesRenovacion" style="width: 150px;" value="#{equipoBean.equipoModelo.mes_renovacion}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"></td>
+			    	<td width="18%" style="padding-left: 5px;"></td>
+			    	<td width="10%" style="padding-left: 5px;"></td>
+			    	<td width="32%" style="padding-left: 5px;"></td>
 			    </tr>
 			    <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Proveedor" /></td>
@@ -214,9 +252,13 @@
 				            <f:selectItem itemLabel=""             	 		itemValue="" />
 				            <f:selectItem itemLabel="LEAN BUSINESS GROUP"   itemValue="LBG" />
 				            <f:selectItem itemLabel="NTT" 					itemValue="NTT" />
+				            <f:selectItem itemLabel="OTRO" 					itemValue="OTR" />
 				        </p:selectOneMenu>
 			    	</td>
-			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
+			    	<td width="1o%" style="padding-left: 5px;"><p:outputLabel value="Tiket" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtTicket" style="width: 150px;" value="#{equipoBean.equipoModelo.ticket}" />
+			    	</td>
 			    </tr>
 			    </table>
 			   
@@ -235,23 +277,46 @@
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Comentarios" /></td>
 			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtComentarios" style="width: 488px;" value="#{equipoBean.equipoModelo.comentarios}" /></td>
 			    	<!-- <td width="42%" style="padding-left: 5px;" colspan="2"></td> -->
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Garantia" /></td>
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtGarantia" style="width: 150px;" value="#{equipoBean.equipoModelo.garantia}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Accion" /></td>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:selectOneMenu id="txtAccion" style="width: 150px" value="#{equipoBean.equipoModelo.acc}">
+				            <f:selectItem itemLabel=""             	 	itemValue="" />
+				            <f:selectItem itemLabel="RENOVADO"       	itemValue="1" />
+				            <f:selectItem itemLabel="PROGRAMADO" 	    itemValue="2" />
+				            <f:selectItem itemLabel="NO CONTESTA"       itemValue="3" />
+				            <f:selectItem itemLabel="NO PROCEDE CAMBIO" itemValue="4" />	            
+				        </p:selectOneMenu>
+			    	</td>
 			    </tr>
-			    <tr height="35px">
+			    <!-- <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Archivo" /></td>
 			    	<td width="46%" style="padding-left: 5px;" colspan="3"><p:inputText id="txtArchivo" style="width: 488px;" value="#{equipoBean.equipoModelo.archivo}" /></td>
-			    	<!-- <td width="42%" style="padding-left: 5px;" colspan="2"></td> -->
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="S. O." /></td> 
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtSistema" style="width: 330px;" value="#{equipoBean.equipoModelo.sistema}" /></td>
-			    </tr>
+			    	<td width="32%" style="padding-left: 5px;">
+			    		<p:inputText id="txtSistema22" style="width: 330px;" />
+			    	</td>
+			    </tr> -->
 			    <tr height="35px">
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F.Alta" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtFechaAlta" style="width: 150px;" value="#{equipoBean.equipoModelo.alta}" /></td>
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Est.Cntrl" /></td>
-			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtEstControl" style="width: 150px;" value="#{equipoBean.equipoModelo.estatus_control}" /></td>
-			    	<td width="10%" style="padding-left: 5px;" colspan="2"></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtEstControl" style="width: 150px;" value="#{equipoBean.equipoModelo.estatus_control}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Mofificado Por" /></td>
+			    	<td width="18%" style="padding-left: 5px;">
+			    		<p:inputText id="txtModiicadofPor" style="width: 150px;" disabled="true" value="#{equipoBean.equipoModelo.modificado_por}" />
+			    	</td>
+			    	<td width="10%" style="padding-left: 5px;" ><p:outputLabel value="F. Modificacion" /></td>
+			    	<td width="18%" style="padding-left: 5px;" >
+			    		<p:inputText id="txtFechaModif"    style="width: 150px;" disabled="true"  value="#{equipoBean.equipoModelo.fecha_modifica}" />
+			    	</td>
 			    </tr> 
+			    <tr height="35px">
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Comentarios Control" /></td>
+			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    		<p:inputText id="txtCommControl" style="width: 488px;" value="#{equipoBean.equipoModelo.comm_control}" /> 
+			    	</td>
+			    	<td width="42%" style="padding-left: 5px;" colspan="2"></td>
+			    </tr>
 			    <tr height="35px">			    	
 			    	<td width="42%" style="padding-left: 5px;" colspan="6"></td>
 			    </tr>

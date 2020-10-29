@@ -22,13 +22,15 @@ public class CatalogosService {
 	Constantes constantes = new Constantes();
 	
 	
-	public List<LocalidadDTO> buscarLocalidadMSSericio( ) {		
+	public List<LocalidadDTO> buscarLocalidades( ) {		
 		System.out.println("Service {} - Se realiza la consulta de 'Localidades' en la Base de datos Mediante WS-Rest");
 		List<LocalidadDTO> localidades = new ArrayList<LocalidadDTO>();
 		String jsonLocalidad      = "";
 		
 		try {
-            URL url = new URL("http://" + constantes.IP_APLICAION + ":8070/catalogo/catlocalidades-consultar");	//your url i.e fetch data from .
+            String urlLocalidad = "http://" + constantes.IP_APLICAION + constantes.CAT_CONTEXT + "/catalogo/catlocalidades-consultar";
+            System.out.println(urlLocalidad);
+            URL url = new URL(urlLocalidad);	//your url i.e fetch data from .
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -80,7 +82,10 @@ public class CatalogosService {
 			default: break;
 			}
 			
-            URL url = new URL("http://" + constantes.IP_APLICAION + ":8070/catalogo/" + urlCatalogo + idCatalogo);	//your url i.e fetch data from .
+			String urlLocalidad = "http://" + constantes.IP_APLICAION + constantes.CAT_CONTEXT + "/catalogo/" + urlCatalogo + idCatalogo;
+			System.out.println("urlLocalidad: " + urlLocalidad);
+			URL url = new URL(urlLocalidad);	//your url i.e fetch data from .
+            System.out.println(urlLocalidad);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");

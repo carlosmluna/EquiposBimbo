@@ -20,13 +20,14 @@ public class EquipoBusquedaModelo {
 	private List<SelectItem> localidadesList;
 	private List<String>     equiposList;
 	private List<EquipoDTO>	 equipos;
+	private String serie_cambio;
 	
 	
 	public EquipoBusquedaModelo() { }
 	
 	public EquipoBusquedaModelo(String id, String estatus, String region, String localidad, String bodega, String razonSocial,
 			String modelo, String accion, String programacion, String proveedor, List<SelectItem> localidadesList,
-			List<String> equiposList, List<EquipoDTO> equipos) {
+			List<String> equiposList, List<EquipoDTO> equipos, String serie_cambio) {
 		this.id              = id;
 		this.estatus 		 = estatus;
 		this.region 		 = region;
@@ -40,6 +41,7 @@ public class EquipoBusquedaModelo {
 		this.localidadesList = localidadesList;
 		this.equiposList 	 = equiposList;
 		this.equipos 	 	 = equipos;
+		this.serie_cambio   = serie_cambio;
 	}
 	
 	
@@ -121,12 +123,19 @@ public class EquipoBusquedaModelo {
 	public void setEquipos(List<EquipoDTO> equipos) {
 		this.equipos = equipos;
 	}
+	public String getSerie_cambio() {
+		return serie_cambio;
+	}
+	public void setSerie_cambio(String serie_cambio) {
+		this.serie_cambio = serie_cambio;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "EquipoBusquedaModelo [estatus=" + estatus + ", region=" + region + ", localidad=" + localidad
 				+ ", bodega=" + bodega + ", razonSocial=" + razonSocial + ", modelo=" + modelo + ", accion=" + accion
 				+ ", programacion=" + programacion + ", proveedor=" + proveedor + ", localidadesList=" + localidadesList
-				+ ", equiposList=" + equiposList + ", equipos=" + equipos + "]";
+				+ ", equiposList=" + equiposList + ", equipos=" + equipos + ", serie_cambio="+ serie_cambio + "]";
 	}
 }

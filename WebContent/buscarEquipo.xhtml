@@ -21,6 +21,7 @@
 </h:head>
 <h:body>
 	<h:form id="form">
+	    <p:growl id="growl" showDetail="true" sticky="true" />
 	    	    
 	    <!-- Tabla Principal para la busqueda de la aplicacion -->
 	    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
@@ -88,7 +89,7 @@
 				            <f:selectItem itemLabel="MOLDES Y EXHIBIDORES, S.A DE C.V."         itemValue="7" />
 				        </p:selectOneMenu>
 			    	</td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Razon Social" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Razón Social" /></td>
 			    	<td width="32%" style="padding-left: 5px;">
 			    		<!-- <p:inputText id="txtRSocial" style="width: 330px;" /> -->
 			    		<p:selectOneMenu id="txtRSocial" style="width:330px" value="#{equipoBusBean.equipoBusquedaModelo.razonSocial}">
@@ -126,22 +127,24 @@
 				            <f:selectItem itemLabel="NO PROCEDE CAMBIO" itemValue="4" />	            
 				        </p:selectOneMenu>
 			    	</td>
-			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="F Programacion" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Fecha de Programación" /></td>
 			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtFProgramacion" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.programacion}"/></td>
 			    </tr> 
 			    <tr height="35px">
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Proveedor" /></td>
-			    	<td width="46%" style="padding-left: 5px;" colspan="3">
+			    	<td width="18%" style="padding-left: 5px;">
 			    		<!-- <p:inputText id="txtProveedor" style="width: 488px;" /> -->
-			    		<p:selectOneMenu id="txtProveedor" style="width:488px" value="#{equipoBusBean.equipoBusquedaModelo.proveedor}">
+			    		<p:selectOneMenu id="txtProveedor" style="width:150px" value="#{equipoBusBean.equipoBusquedaModelo.proveedor}">
 				            <f:selectItem itemLabel=""             	 		itemValue="" />
 				            <f:selectItem itemLabel="LEAN BUSINESS GROUP"   itemValue="LBG" />
 				            <f:selectItem itemLabel="NTT" 					itemValue="NTT" />
 				        </p:selectOneMenu>
 			    	</td>
 			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Id Equipo" /></td>
-			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtID" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.id}" /></td>
-			    </tr> 			    
+			    	<td width="18%" style="padding-left: 5px;"><p:inputText id="txtID" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.id}" /></td>
+			    	<td width="10%" style="padding-left: 5px;"><p:outputLabel value="Serie a cambiar" /></td>
+			    	<td width="32%" style="padding-left: 5px;"><p:inputText id="txtSerieCambio" style="width: 150px;" value="#{equipoBusBean.equipoBusquedaModelo.serie_cambio}" /></td>
+			    </tr>	    
 			    <tr>
 			    	<td width="15%" height="45px" colspan="6">
 			    		<p:commandButton value="Buscar Equipo" id="btnBuscar" style="width: 125px; margin-right:20px;" action="#{equipoBusBean.buscarEquiposFiltrosPantalla}" update="dtbleEquipos" />
@@ -160,12 +163,15 @@
 	    <tr>
 	    	<td>
 			    <p:dataTable id="dtbleEquipos" var="equipo" value="#{equipoBusBean.equipoBusquedaModelo.equipos}" 
-			    	rows="5" paginator="true" paginatorposition="bottom" 
+			    	rows="20" paginator="true" paginatorposition="bottom" 
                  	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                  	currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                 	rowsPerPageTemplate="5,10,15" >
+                 	rowsPerPageTemplate="20,40,60,80,100" >
                  	<p:column headerText="Id" width="80px">
 				        <h:outputText value="#{equipo.id}" />
+				    </p:column>
+				    <p:column headerText="Serie Cambio">
+				        <h:outputText value="#{equipo.serie_cambio}" />
 				    </p:column>
 				    <p:column headerText="Estatus">
 				        <h:outputText value="#{equipo.estatus}" />

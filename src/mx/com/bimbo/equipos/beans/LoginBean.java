@@ -42,15 +42,17 @@ public class LoginBean {
 		FacesContext fcesContext = FacesContext.getCurrentInstance();
 		if ( loginModelo.getUsuario().equals("") ) {
 			fcesContext.addMessage(null, new FacesMessage("Error",  "Capture el 'Usuario'. Este valor es requerido") );
+			loginModelo.setUsuario( Constantes.CHAR_VACIO );
 			return Constantes.PGE_LOGIN;
 		} 
 		if ( loginModelo.getPassword().equals("") ) {
 			fcesContext.addMessage(null, new FacesMessage("Error",  "Capture la 'Contraseña'. Este valor es requerido") );
+			loginModelo.setPassword( Constantes.CHAR_VACIO );
 			return Constantes.PGE_LOGIN;
 		} 
 		System.out.println("Ingresando a la aplicacion .... ");
 		
-		UsuarioDTO usuarioDTO = usuarioService.buscarUsuarioMSSericcio( usuario );				
+		UsuarioDTO usuarioDTO = usuarioService.buscarRegistroUsuario( usuario );				
 		if ( usuarioDTO!=null && usuarioDTO.getId_usuario()!=0 ) {
 			FacesContext context  = javax.faces.context.FacesContext.getCurrentInstance();
 			HttpSession session   = (HttpSession) context.getExternalContext().getSession(false);
@@ -59,7 +61,7 @@ public class LoginBean {
 			
 			pagina = Constantes.PGE_SRCH_EQUIPO; 
 		} else {
-			pagina = Constantes.PGE_LOGIN;   	 }
+			pagina = Constantes.PGE_LOGIN;	}
 		
 		return pagina;
 	}

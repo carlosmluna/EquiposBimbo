@@ -3,6 +3,7 @@ package mx.com.bimbo.equipos.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -59,7 +60,7 @@ public class EquipoBusquedaBean {
 	private void consultaListaLocalidades() {
 		List<SelectItem> localidadesList = new ArrayList<SelectItem>();
 		
-		List<LocalidadDTO> localidades = catalogoService.buscarLocalidadMSSericio();
+		List<LocalidadDTO> localidades = catalogoService.buscarLocalidades();
 		for ( int ind=0; ind<localidades.size(); ind++ ) {
 			SelectItem itmLocalidad = new SelectItem();
 			
@@ -74,8 +75,17 @@ public class EquipoBusquedaBean {
 		EquipoService equipoService = new EquipoService();
 		// String request = "{\"id\":1}";
 		
-		// buscarEquiposMSSericio( equipoBusquedaModelo );
-		List<EquipoDTO> equiposDTO = equipoService.buscarEquiposPorDTOMSSericio( equipoBusquedaModelo ); 	
+		// 21/Oct/2020 - CMLFJ - Se comenta por que se solicita que no se haga la validacion del estatus requerido
+		/* FacesContext fcesContext = FacesContext.getCurrentInstance();
+		if ( equipoBusquedaModelo.getEstatus().equals("") ) {
+			fcesContext.addMessage(null, new FacesMessage("Error", "Seleccione un 'Estatus' para realizar la busqueda") );
+		} else {
+			// buscarEquiposMSSericio( equipoBusquedaModelo );
+			List<EquipoDTO> equiposDTO = equipoService.buscarEquiposPorDTO( equipoBusquedaModelo ); 	
+			equipoBusquedaModelo.setEquipos(equiposDTO);
+		} */
+		
+		List<EquipoDTO> equiposDTO = equipoService.buscarEquiposPorDTO( equipoBusquedaModelo ); 	
 		equipoBusquedaModelo.setEquipos(equiposDTO);
 	}
 	
@@ -85,30 +95,34 @@ public class EquipoBusquedaBean {
 		EquipoService equipoService = new EquipoService();
 		EquipoModelo  equipoModelo  = new EquipoModelo();
 		
-		EquipoDTO equipoDto = equipoService.buscarRegistroEquipoMSSericio( equipo.getId() );
+		EquipoDTO equipoDto = equipoService.buscarRegistroEquipoPorID( equipo.getId() );
+		
 		equipoModelo.setId( equipoDto.getId() );
 		equipoModelo.setEstatus( equipoDto.getEstatus() !=null ? equipoDto.getEstatus() : "" );
 		equipoModelo.setRegion( equipoDto.getRegion() !=null ? equipoDto.getRegion() : "" );
 		equipoModelo.setLocalidad( equipoDto.getLocalidad() !=null ? equipoDto.getLocalidad() : "" );
 		equipoModelo.setBodega( equipoDto.getBodega() !=null ? equipoDto.getBodega() : "" );
 		equipoModelo.setRazon( equipoDto.getRazon() !=null ? equipoDto.getRazon() : "" );
+		// Informacion del Equipo a Reemplazar
 		equipoModelo.setEmpleado( equipoDto.getEmpleado() !=null ? equipoDto.getEmpleado() : "" );
-		equipoModelo.setSerie_cambio( equipoDto.getSerie_cambio() !=null ? equipoDto.getSerie_cambio() : "" );
 		equipoModelo.setNombre_cambio( equipoDto.getNombre_cambio() !=null ? equipoDto.getNombre_cambio() : "" );
+		equipoModelo.setSerie_cambio( equipoDto.getSerie_cambio() !=null ? equipoDto.getSerie_cambio() : "" );		
 		equipoModelo.setEstatus_cambio( equipoDto.getEstatus_cambio() !=null ? equipoDto.getEstatus_cambio() : "" );
 		equipoModelo.setMarca( equipoDto.getMarca() !=null ? equipoDto.getMarca() : "" );
 		equipoModelo.setModelo( equipoDto.getModelo() !=null ? equipoDto.getModelo() : "" );
+		// Informacion del Equipo Nuevo
 		equipoModelo.setNombre_nuevo( equipoDto.getNombre_nuevo() !=null ? equipoDto.getNombre_nuevo() : "" );
 		equipoModelo.setSerie_nuevo( equipoDto.getSerie_nuevo() !=null ? equipoDto.getSerie_nuevo() : "" );
+		equipoModelo.setAlta( equipoDto.getAlta() !=null ? equipoDto.getAlta() : "" );
 		equipoModelo.setModelo_nuevo( equipoDto.getModelo_nuevo() !=null ? equipoDto.getModelo_nuevo() : "" );
-		equipoModelo.setOrden( equipoDto.getOrden() !=null ? equipoDto.getOrden() : "" );
-		equipoModelo.setAccion( equipoDto.getAccion() !=null ? equipoDto.getAccion() : "" );
-		equipoModelo.setProgramado( equipoDto.getProgramado() !=null ? equipoDto.getProgramado() : "" );   
-		equipoModelo.setProveedor( equipoDto.getProveedor() !=null ? equipoDto.getProveedor() : "" );     
-		equipoModelo.setComentarios( equipoDto.getComentarios() !=null ? equipoDto.getComentarios() : ""  );    
-		equipoModelo.setArchivo( equipoDto.getArchivo() !=null ? equipoDto.getArchivo() : "" );
 		equipoModelo.setGarantia( equipoDto.getGarantia() !=null ? equipoDto.getGarantia() : "" ); 
-		equipoModelo.setSistema( equipoDto.getSistema() !=null ? equipoDto.getSistema() : "" );	
+		equipoModelo.setSistema( equipoDto.getSistema() !=null ? equipoDto.getSistema() : "" );			
+		equipoModelo.setOrden( equipoDto.getOrden() !=null ? equipoDto.getOrden() : "" );
+		equipoModelo.setComentarios( equipoDto.getComentarios() !=null ? equipoDto.getComentarios() : ""  );   
+		equipoModelo.setProgramado( equipoDto.getProgramado() !=null ? equipoDto.getProgramado() : "" ); 
+		equipoModelo.setProveedor( equipoDto.getProveedor() !=null ? equipoDto.getProveedor() : "" );     
+		equipoModelo.setEstatus_control( equipoDto.getEstatus_control() !=null ? equipoDto.getEstatus_control() : "" );
+		equipoModelo.setAccion( equipoDto.getAccion() !=null ? equipoDto.getAccion() : "" );	 	
 		//  Obtengo los ids
 		equipoModelo.setEst( equipoDto.getEst() );
 		equipoModelo.setReg( equipoDto.getReg() );
@@ -116,11 +130,16 @@ public class EquipoBusquedaBean {
 		equipoModelo.setBod( equipoDto.getBod() );
 		equipoModelo.setRaz( equipoDto.getRaz() );
 		equipoModelo.setAcc( equipoDto.getAcc() );
-		// Obtengo los campos nuevos
-		equipoModelo.setAlta( equipoDto.getAlta() !=null ? equipoDto.getAlta() : "" );
-		equipoModelo.setEstatus_control( equipoDto.getEstatus_control() !=null ? equipoDto.getEstatus_control() : "" );
-		equipoModelo.setNombre_recambio( equipoDto.getNombre_recambio() !=null ? equipoDto.getNombre_recambio() : "" );	
-		equipoModelo.setSerie_renombre( equipoDto.getSerie_renombre() !=null ? equipoDto.getSerie_renombre() : "" );
+		equipoModelo.setCtrl( equipoDto.getCtrl() );
+		// Informacion del Actualizacion del Registro
+		equipoModelo.setModificado_por( equipoDto.getUsuario_modifica() !=null ? equipoDto.getUsuario_modifica() : "" );
+		equipoModelo.setFecha_modifica( equipoDto.getFecha_modifica() !=null ? equipoDto.getFecha_modifica() : "" );
+		// equipoModelo.setNombre_recambio( equipoDto.getNombre_recambio() !=null ? equipoDto.getNombre_recambio() : "" );	
+		// equipoModelo.setSerie_renombre( equipoDto.getSerie_renombre() !=null ? equipoDto.getSerie_renombre() : "" );
+		// 26Oct2020 - Campos Nuevos
+		equipoModelo.setMes_renovacion( equipoDto.getMes_renovacion()!=null ? equipoDto.getMes_renovacion() : "" );
+		equipoModelo.setTicket( equipoDto.getTicket()!=null ? equipoDto.getTicket() : "" );
+		equipoModelo.setComm_control( equipoDto.getComm_control()!=null ? equipoDto.getComm_control() : "" );
 		
 		FacesContext context  = javax.faces.context.FacesContext.getCurrentInstance();
 		HttpSession session   = (HttpSession) context.getExternalContext().getSession(false);

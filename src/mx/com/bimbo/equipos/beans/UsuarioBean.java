@@ -20,7 +20,7 @@ public class UsuarioBean {
 		return loginModelo;
 	}
 	public void setLoginModelo(LoginModelo loginModelo) {
-		this.loginModelo = loginModelo;
+		this.loginModelo = loginModelo; 
 	}
 	
 	
@@ -46,7 +46,7 @@ public class UsuarioBean {
 		String pagina  = "";
 		String usuario = loginModelo.getUsuario();
 		
-		UsuarioDTO usuarioDTO = usuarioService.buscarUsuarioMSSericcio( usuario );				
+		UsuarioDTO usuarioDTO = usuarioService.buscarRegistroUsuario( usuario );				
 		if ( usuarioDTO!=null && usuarioDTO.getId_usuario()!=0 ) {
 			FacesContext context  = javax.faces.context.FacesContext.getCurrentInstance();
 			HttpSession session   = (HttpSession) context.getExternalContext().getSession(false);

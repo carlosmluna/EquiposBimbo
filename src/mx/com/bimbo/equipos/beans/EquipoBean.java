@@ -89,7 +89,7 @@ public class EquipoBean {
 	private void consultaListaLocalidades() {
 		List<SelectItem> localidadesList = new ArrayList<SelectItem>();
 		
-		List<LocalidadDTO> localidades = catalogoService.buscarLocalidadMSSericio();
+		List<LocalidadDTO> localidades = catalogoService.buscarLocalidades();
 		for ( int ind=0; ind<localidades.size(); ind++ ) {
 			SelectItem itmLocalidad = new SelectItem();
 			
@@ -130,13 +130,16 @@ public class EquipoBean {
 	}
 	
 	public void actualizaInformacionEquipo() {
-		/* FacesContext context  = javax.faces.context.FacesContext.getCurrentInstance();
-		HttpSession session   = (HttpSession) context.getExternalContext().getSession(false);
-		String usuario = (String) session.getAttribute("usaurio"); */
-		String usuario = "SysAdmin";
-		
+		String usuario = "";
+		try {
+			FacesContext context  = javax.faces.context.FacesContext.getCurrentInstance();
+			HttpSession session   = (HttpSession) context.getExternalContext().getSession(false);
+			usuario = (String) session.getAttribute("usaurio"); 
+		} catch (Exception e) {
+			usuario = "sysadmin";
+		}
 		// Actualiza el registro de la pantalla
-		EquipoDTO equipoDTO = equipoService.actualziarEquipoMSServivio( equipoModelo, usuario!=null ? usuario : "sysadmin" );
+		EquipoDTO equipoDTO = equipoService.actualziarEquipo( equipoModelo, usuario!=null ? usuario : "sysadmin" );
 		FacesContext fcesContext = FacesContext.getCurrentInstance();
 		if ( equipoDTO.getId()==0 ) {
 			fcesContext.addMessage(null, new FacesMessage("Error",  "Ocurrio un Error al Guardar") );
